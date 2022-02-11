@@ -1,7 +1,7 @@
 {
   "name": "movies-explorer-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend-platform of the app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,13 +13,14 @@
     "type": "git",
     "url": "git+https://github.com/Roman17-github/movies-explorer-api.git"
   },
-  "author": "",
+  "author": "Roma Tsykunkov",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Roman17-github/movies-explorer-api/issues"
   },
   "homepage": "https://github.com/Roman17-github/movies-explorer-api#readme",
   "devDependencies": {
+    "eslint-config-airbnb-base": "^15.0.0",
     "nodemon": "^2.0.15"
   },
   "dependencies": {
@@ -30,9 +31,12 @@
     "dotenv": "^16.0.0",
     "eslint": "^8.8.0",
     "express": "^4.17.2",
+    "express-rate-limit": "^6.2.1",
     "express-winston": "^4.2.0",
+    "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.0",
+    "save": "^2.4.0",
     "validator": "^13.7.0",
     "winston": "^3.5.1"
   }

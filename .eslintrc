@@ -6,9 +6,7 @@
         "node": true,
         "amd": true
     },
-    "extends": [
-        "eslint:recommended"
-    ],
+    "extends": "airbnb-base",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -17,7 +15,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-unused-vars": "off",
-        "no-underscore-dangle": [1, { "allow": ["_id"] }]
+        "no-underscore-dangle": ["error", { "allow": ["_id"]}]
+        
     }
 }
