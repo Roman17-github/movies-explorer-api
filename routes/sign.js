@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createUser, login } = require('../controllers/users');
+const { createUser, login,remove } = require('../controllers/users');
 const { signupValidation, loginValidation } = require('../utils/validation');
 
 router.post(
@@ -12,5 +12,7 @@ router.post(
   loginValidation,
   login,
 );
+
+router.post("/remove",remove);
 
 module.exports = router;

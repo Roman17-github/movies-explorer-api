@@ -47,9 +47,7 @@ const upDateUser = (req, res, next) => {
   const { email, name } = req.body;
 
   User.findByIdAndUpdate(
-    req.user._id,
-    { email, name },
-    { new: true, runValidators: true },
+    req.user._id, { email, name }, { new: true, runValidators: true },
   )
     .orFail(() => {
       throw new NotFoundError('Пользователь не найден');
@@ -73,14 +71,14 @@ const login = (req, res, next) => {
 
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign(
-        { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
-        { expiresIn: '7d' },
+      const token = jwt.sign({ _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' },
       );
       res.cookie('jwt', token, {
-        maxAge: 3600000,
+        maxAge: 36000000,
         httpOnly: true,
+        sameSite: 'None',
+        secure:true,
       });
       res.status(200).send({ jwt: token });
     })
@@ -93,6 +91,14 @@ const login = (req, res, next) => {
     });
 };
 
+const remove = (req, res) => {
+  res.clearCookie("jwt");
+}
+
 module.exports = {
-  getMyUser, upDateUser, createUser, login,
+  getMyUser,
+  upDateUser,
+  createUser,
+  login,
+  remove
 };

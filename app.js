@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
+const cors = require('./middlewares/cors');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes/index');
@@ -20,11 +21,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 mongoose.connect(NODE_ENV === 'production' ? MONGO : 'mongodb://localhost:27017/moviesdb', {
-  useNewUrlParser: true,
+    useNewUrlParser: true,
 });
 
 app.use(helmet());
 app.use(limiter);
+app.use(cors);
 app.use(requestLogger);
 app.use(routes);
 app.use(errorLogger);

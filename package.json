@@ -21,7 +21,8 @@
   "homepage": "https://github.com/Roman17-github/movies-explorer-api#readme",
   "devDependencies": {
     "eslint-config-airbnb-base": "^15.0.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "prettier": "2.5.1"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
