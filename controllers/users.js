@@ -5,6 +5,7 @@ const ValidationError = require('../errors/validationError');
 const ConflictError = require('../errors/conflictError');
 const NotFoundError = require('../errors/notFoundError');
 const InvalidLoginError = require('../errors/invalidLoginError');
+const { send } = require('express/lib/response');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
@@ -77,8 +78,7 @@ const login = (req, res, next) => {
       res.cookie('jwt', token, {
         maxAge: 36000000,
         httpOnly: true,
-        sameSite: 'None',
-        secure:true,
+        
       });
       res.status(200).send({ jwt: token });
     })
@@ -91,14 +91,9 @@ const login = (req, res, next) => {
     });
 };
 
-const remove = (req, res) => {
-  res.clearCookie("jwt");
-}
-
 module.exports = {
   getMyUser,
   upDateUser,
   createUser,
   login,
-  remove
 };
