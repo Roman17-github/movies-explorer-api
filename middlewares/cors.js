@@ -1,8 +1,10 @@
 const allowedCors = [
-    'https://roma.134.nomoredomains.rocks',
-    'http://roma.134.nomoredomains.rocks',
+    'https://diplom.roma134.nomoredomains.work',
+    'http://diplom.roma134.nomoredomains.work',
     'https://localhost:3001',
     'http://localhost:3001',
+    'https://localhost:3000',
+    'http://localhost:3000',
 ];
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
