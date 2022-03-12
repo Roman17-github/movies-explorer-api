@@ -5,7 +5,6 @@ const ValidationError = require('../errors/validationError');
 const ConflictError = require('../errors/conflictError');
 const NotFoundError = require('../errors/notFoundError');
 const InvalidLoginError = require('../errors/invalidLoginError');
-const { send } = require('express/lib/response');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 

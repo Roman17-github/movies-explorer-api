@@ -25,9 +25,9 @@ mongoose.connect(NODE_ENV === 'production' ? MONGO : 'mongodb://localhost:27017/
 });
 
 app.use(helmet());
+app.use(requestLogger);
 app.use(limiter);
 app.use(cors);
-app.use(requestLogger);
 app.use(routes);
 app.use(errorLogger);
 app.use(errors());
