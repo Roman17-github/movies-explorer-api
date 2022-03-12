@@ -32,7 +32,7 @@ const createUser = (req, res, next) => {
     .then((user) => {
       res
         .status(200)
-        .send({ message: `Пользователь ${user.name} успешно зарегистрирован` });
+        .send({ name: user.name, email: user.email });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -78,8 +78,8 @@ const login = (req, res, next) => {
         maxAge: 36000000,
         httpOnly: true,
         sameSite: 'None',
-        secure:true,
-        
+        secure: true,
+
       });
       res.status(200).send({ jwt: token });
     })
