@@ -30,6 +30,16 @@ const createUser = (req, res, next) => {
     })
     .then((hash) => User.create({ email, password: hash, name }))
     .then((user) => {
+      const token = jwt.sign({ _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' },
+      );
+      res.cookie('jwt', token, {
+        maxAge: 36000000,
+        httpOnly: true,
+        sameSite: 'None',
+        secure: true,
+
+      });
       res
         .status(200)
         .send({ name: user.name, email: user.email });
