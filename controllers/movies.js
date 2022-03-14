@@ -5,7 +5,7 @@ const Movie = require('../models/movie');
 
 const getMovies = (req, res) => {
   Movie
-    .find({})
+    .find({ owner: req.user._id })
     .then((m) => {
       res.status(200).send(m);
     })
